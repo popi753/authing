@@ -27,13 +27,6 @@ router.get("/register", (req,res)=>{
 
 
 
-
-
-
-
-
-
-
 //not using
 router.post("/profile",(req,res)=>{
  
@@ -62,11 +55,28 @@ router.post("/profile",(req,res)=>{
  
  })
 
+
+ 
 //using
- router.post("/register", (req,res)=>{
+ router.post("/register", async (req,res)=>{
 
+
+function reload(param) {
+  res.render("register",{
+    surname: req.body.Rsurname,
+    lastname: req.body.Rlastname,
+    age: req.body.Rage,
+    username: req.body.Rusername,
+    password: req.body.Rpassword,
+    email: req.body.Remail,
+    someerror: param
+  },
+  console.log("nixuasibe"))
+}
   
-
+  
+  
+  
   const user = new User({
     surname: req.body.Rsurname,
     lastname: req.body.Rlastname,
@@ -75,30 +85,26 @@ router.post("/profile",(req,res)=>{
     password: req.body.Rpassword,
     email: req.body.Remail
   })
+  
+
 
 
   user.save((err,saveduser)=>{
-    if (err) {
+    
+   if (err) {
       console.log(err)
       console.log(err.code)
       if (err.code==11000) {
-        res.render("register",{
-          surname: req.body.Rsurname,
-          lastname: req.body.Rlastname,
-          age: req.body.Rage,
-          username: req.body.Rusername,
-          password: req.body.Rpassword,
-          email: req.body.Remail,
-          someerror: err.code
-        },
-        console.log("nixuasibe"))
+        reload(err.code)
       }
      
-      
-    }else{
+    }
+    else{
       console.log("nigga saved")
       res.redirect("/profile")
     }
+
+    
   })
 
 
@@ -108,24 +114,15 @@ router.post("/profile",(req,res)=>{
 
 
 
-
- 
- 
-  
-
-
-
-
-
-
-
-
 router.get("/profile",async (req,res)=>{
-  // let log = await User.find({username: req.body.Rusername})
+  let log = await User.find({username: req.body.Rusername})
   // res.send(...log)
-  console.log(await User.find({username: req.body.Rusername}))
+  // console.log(await User.find({username: req.body.Rusername}))
+  console.log(`this is fucking req body ${log}`)
   res.render("profile", {profile: await User.find({username: req.body.Rusername})})
 })
+
+
 
 
 

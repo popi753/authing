@@ -9,53 +9,48 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <% if (someerror == 11000) { %>
       <style>
-        #Rnameerrspan{
-          position: absolute;
-    top: 49%;
-    left: 81%;
-    font-weight: 500;
-    color: red;
-    font-size: 28px;
-        }
+        
         #Rnameinput{
           border-color: red;
         }
 
-
-        #error{
-            display: none;
-            position: absolute;
-            margin-top: 15px;
-  
+        
+        #error4{
+          display: none;
+          position: absolute;
+          margin-top: 15px;
         }
-        #errorbox{
-        padding: 10px;
-        overflow-wrap: break-word;
-        display: inline-block;
-        margin-top: -5px;
-        margin-left: 13px;
-        max-width: 200px;
-        background-color: #be4b49;
-        border-radius: 2px;
-        box-shadow: 0 0 0 1px rgb(72 143 237), 0 1px 10px rgb(0 0 0 / 35%);
+        #errorbox4{
+          padding: 10px;
+          overflow-wrap: break-word;
+          display: inline-block;
+          margin-top: -5px;
+          margin-left: 13px;
+          max-width: 200px;
+          background-color: #be4b49;
+          border-radius: 2px;
+          box-shadow: 0 0 0 1px rgb(72 143 237), 0 1px 10px rgb(0 0 0 / 35%);
             
         }
-        #errortriangle{
+        #errortriangle4{
           width: 0; 
           height: 0; 
           border-top: 15px solid transparent;
           border-bottom: 15px solid transparent; 
-    
-           border-right:15px solid #be4b49; 
-        position: absolute;
-        
-        
-        
-        z-index: 2;
+          border-right:15px solid #be4b49; 
+          position: absolute;
+          z-index: 2;
   }
     </style>
-      
+    
         <% } %>
+    
+
+
+        
+
+
+    
 </head>
 <body>
     <div id="box">
@@ -67,6 +62,7 @@
                 <a href="..">
                 <svg id="registersvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z"/></svg>
                 </a>
+                
                 <p id="pregister">register</p>
                 <div class="registerboxes">
                     
@@ -76,7 +72,10 @@
                           <% } else {%>
                         
                             value=""
-                          <% } %> type="text" title="fuck you" id="Rsurnameinput" name="Rsurname" placeholder="enter surname" required>
+                          <% } %> type="text" id="Rsurnameinput" name="Rsurname" placeholder="enter surname" >
+
+                            
+                          
                     <label for="Rsurnameinput" id="Rsurnamelabel"></label>   
                 </div>
                 <div class="registerboxes">
@@ -108,18 +107,18 @@
                     
                   
                   <% if (someerror == 11000) { %>
-                    <span id="Rnameerrspan">!</span>
-                    <div id="error">
-                      <div id="errortriangle"></div>
-                      <div id="errorbox">user <%= username %> already exists</div>
+                    
+                    <div id="error4">
+                      <div id="errortriangle4"></div>
+                      <div id="errorbox4">user <span id="spanusername"> <%= username %> </span> already exists</div>
                     </div>
  <script>
-                              const input =  document.getElementById("Rnameinput")
-   input.addEventListener("focusout", ()=>{
-    document.getElementById("error").style.display = "none"
+                              const input4 =  document.getElementById("Rnameinput")
+   input4.addEventListener("focusout", ()=>{
+    document.getElementById("error4").style.display = "none"
    })
-   input.addEventListener("focusin", ()=>{
-    document.getElementById("error").style.display = "inline-block"
+   input4.addEventListener("focusin", ()=>{
+    document.getElementById("error4").style.display = "inline-block"
    })
 
  </script>
@@ -142,7 +141,7 @@
                           <% } else {%>
                         
                             value=""
-                          <% } %>title="fuck you" type="email" id="Remailinput" name="Remail" placeholder="enter email" > <br>
+                          <% } %>type="email" id="Remailinput" name="Remail" placeholder="enter email" > <br>
                     <label for="Remailinput" id="Remaillabel"></label>   
                 </div>
                 <!-- <a href="./profile"> -->
